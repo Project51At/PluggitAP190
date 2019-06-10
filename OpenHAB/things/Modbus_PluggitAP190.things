@@ -1,11 +1,11 @@
 //
 //	@author			Helge Klug
-//	@copyright	Copyright (c) 2018 Helge Klug
-//	@version		1.0
+//	@copyright		Copyright (c) 2018 Helge Klug
+//	@version		1.00
 
-//	@see			  http://www.pluggit.com/fileserver/files/1413/609560454939420/21_10_2013_modbus_addresses.pdf
+//	@see			http://www.pluggit.com/fileserver/files/1413/609560454939420/21_10_2013_modbus_addresses.pdf
 
-Bridge modbus:tcp:PluggitAP190 [ host="<IP-Address>", port=502, id=2 ] {
+Bridge modbus:tcp:PluggitAP190 [ host="192.168.199.70", port=502, id=2 ] {
 
 	//-------------------------------------------------------------------------
 	//	Register	:	40101 | prmHALTaho1						| Float	| Read	|   Fan1 rpm
@@ -32,7 +32,7 @@ Bridge modbus:tcp:PluggitAP190 [ host="<IP-Address>", port=502, id=2 ] {
 	//
 	Bridge poller prmDateTime					[ start=109,		length=4,	refresh=5000,	type="holding" ] {
 		Thing data register						[ readStart="109",	readValueType="uint32" ]
-		//Thing data registerDateTime				[ readStart="109",	readValueType="uint32", readTransform="JS(EpocheToDateTime.js)" ]
+		//Thing data registerDateTime			[ readStart="109",	readValueType="uint32", readTransform="JS(EpocheToDateTime.js)" ]
 	}
 
 	//-------------------------------------------------------------------------
@@ -59,7 +59,7 @@ Bridge modbus:tcp:PluggitAP190 [ host="<IP-Address>", port=502, id=2 ] {
 	//	Status		:	OK
 	//
 	Bridge poller prmRamIdxT2					[ start=135,		length=4,	refresh=5000,	type="holding" ] {
-        Thing data register						[ readStart="135",	readValueType="float32" ]
+		Thing data register						[ readStart="135",	readValueType="float32" ]
 	}
 
 	//-------------------------------------------------------------------------
@@ -68,7 +68,7 @@ Bridge modbus:tcp:PluggitAP190 [ host="<IP-Address>", port=502, id=2 ] {
 	//	Status		:	OK
 	//
 	Bridge poller prmRamIdxT3					[ start=137,		length=4,	refresh=5000,	type="holding" ] {
-        Thing data register						[ readStart="137",	readValueType="float32" ]
+		Thing data register						[ readStart="137",	readValueType="float32" ]
 	}
 
 	//-------------------------------------------------------------------------
@@ -77,7 +77,7 @@ Bridge modbus:tcp:PluggitAP190 [ host="<IP-Address>", port=502, id=2 ] {
 	//	Status		:	OK
 	//
 	Bridge poller prmRamIdxT4					[ start=139,		length=4,	refresh=5000,	type="holding" ] {
-        Thing data register						[ readStart="139",	readValueType="float32" ]
+		Thing data register						[ readStart="139",	readValueType="float32" ]
 	}
 
 	//-------------------------------------------------------------------------
@@ -134,7 +134,7 @@ Bridge modbus:tcp:PluggitAP190 [ host="<IP-Address>", port=502, id=2 ] {
 	//	Note		:	Don't know why to use  readStart="264",	readValueType="uint32_swap"
 	//
 	Bridge poller prmRamIdxBypassManualTimeout	[ start=264,		length=4,	refresh=5000,	type="holding" ] {
-        Thing data register						[ readStart="264",	readValueType="uint32_swap" ]
+		Thing data register						[ readStart="264",	readValueType="uint32_swap" ]
 	}
 
  	//-------------------------------------------------------------------------
@@ -144,10 +144,10 @@ Bridge modbus:tcp:PluggitAP190 [ host="<IP-Address>", port=502, id=2 ] {
 	//	Status		:	OK
 	//
 	Bridge poller prmRomIdxSpeedLevel			[ start=324,		length=4,	refresh=5000,	type="holding" ] {
-        Thing data readregister				[ readStart="324",	readValueType="uint32_swap", writeStart="324",	writeValueType="uint32_swap", writeType="holding"  ]
+		Thing data	register					[ readStart="324",	readValueType="uint32_swap", writeStart="324",	writeValueType="uint32_swap", writeType="holding"  ]
 	}
 
- 	//-------------------------------------------------------------------------
+	//-------------------------------------------------------------------------
 	//	Register	:	40445 | prmBypassTmin 					| Float	| Read	|	Min temperature for outdoor air (T1)
 	//
 	//	Status		:	OK
@@ -191,7 +191,7 @@ Bridge modbus:tcp:PluggitAP190 [ host="<IP-Address>", port=502, id=2 ] {
 	}
 
 
- 	//-------------------------------------------------------------------------
+	//-------------------------------------------------------------------------
 	//	Register	:	40555 | prmFilterRemainingTime  		| UINT	| Read	|	Remaining time of the Filter Lifetime (Days)
 	//
 	//	Status		:	OK
@@ -208,11 +208,11 @@ Bridge modbus:tcp:PluggitAP190 [ host="<IP-Address>", port=502, id=2 ] {
 	//	Status		:	OK
 	//
 	Bridge poller prmFilterDefaultTime			[ start=556,		length=4,	refresh=5000,	type="holding" ] {
-		Thing data readregister				[ readStart="556", readValueType="uint32_swap", writeStart="556", writeValueType="uint32_swap", writeType="holding" ]
+		Thing data register						[ readStart="556", readValueType="uint32_swap", writeStart="556", writeValueType="uint32_swap", writeType="holding" ]
 	}
 
 
- 	//-------------------------------------------------------------------------
+	//-------------------------------------------------------------------------
 	//	Register	:	 40559 | prmFilterReset  			| UINT	| Write	|	Reset filter timer
 	//																			1	Reset filter timer
 	//
@@ -220,10 +220,10 @@ Bridge modbus:tcp:PluggitAP190 [ host="<IP-Address>", port=502, id=2 ] {
 	//	Status		:
 	//
 	Bridge poller prmFilterReset				[ start=558,		length=4,	refresh=5000,	type="holding" ] {
-		Thing data register					[ readStart="558", readValueType="uint32_swap", writeStart="558", writeValueType="uint32_swap", writeType="holding" ]
+		Thing data register						[ readStart="558",	readValueType="uint32_swap", writeStart="558", writeValueType="uint32_swap", writeType="holding" ]
 	}
 
- 	//-------------------------------------------------------------------------
+	//-------------------------------------------------------------------------
 	//	Register	:	40625 | prmWorkTime  					| UINT	| Read	|	Work time of system, in hours
 	//
 	//	Status		:
@@ -232,13 +232,11 @@ Bridge modbus:tcp:PluggitAP190 [ host="<IP-Address>", port=502, id=2 ] {
 		Thing data register						[ readStart="625",	readValueType="uint32" ]
 	}
 
- 	//-------------------------------------------------------------------------
+	//-------------------------------------------------------------------------
 	//	Register	:	40669 | prmStartExploitationDateStamp	| UINT	| Read	|	Date Stamp of the system start time in Unix time
 	//
 	//	Status		:	OK
 	Bridge poller prmStartExploitationDateStamp	[ start=669,		length=4,	refresh=5000,	type="holding" ] {
 		Thing data register						[ readStart="669",	readValueType="uint32" ]
 	}
-
-
 }
