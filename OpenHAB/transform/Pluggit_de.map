@@ -1,0 +1,53 @@
+#
+#	@author		    Helge Klug
+#	@copyright      Copyright (c) 2018 Helge Klug
+#	@version		1.00
+
+#================================================================================
+SpeedLevelOfFans_0=Off
+SpeedLevelOfFans_1=1
+SpeedLevelOfFans_2=2
+SpeedLevelOfFans_3=3
+SpeedLevelOfFans_4=4
+SpeedLevelOfFans_NULL=Nicht definiert
+
+#================================================================================
+# Active Unit mode:
+ActiveUnitMode_2=Demand
+ActiveUnitMode_4=Manual
+ActiveUnitMode_8=WeekProgram
+ActiveUnitMode_16=Away
+ActiveUnitMode_64=Fireplace
+ActiveUnitMode_2048=Summer
+ActiveUnitMod_NULL=Nicht definiert
+
+#================================================================================
+# Current unit State:
+CurrentUnitState_0=Standby
+CurrentUnitState_1=Manual
+CurrentUnitState_2=Demand
+CurrentUnitState_3=Week program
+CurrentUnitState_4=Servo-flow
+CurrentUnitState_5=Away
+CurrentUnitState_6=Summer
+CurrentUnitState_7=DI Override
+CurrentUnitState_8=Hygrostat override
+CurrentUnitState_9=Fireplace
+CurrentUnitState_10=Installer
+CurrentUnitState_11=Fail Safe 1
+CurrentUnitState_12=Fail Safe 2
+CurrentUnitState_13=Fail Off
+CurrentUnitState_14=Defrost Off
+CurrentUnitState_15=Defrost
+CurrentUnitState_16=Night
+CurrentUnitState_NULL=Nicht definiert
+
+
+#================================================================================
+# Bypass state:
+BypassState_0=Closed
+BypassState_1=In process
+BypassState_32=Closing
+BypassState_64=Opening
+BypassState_255=Opened
+BypassState_NULL=Nicht definiert
