@@ -1,13 +1,13 @@
 //
-//	@author			  Helge Klug
-//	@copyright		Copyright (c) 2019 Helge Klug
-//	@version		  1.0
+//	@author			Helge Klug
+//	@copyright		Copyright (c) 2018 Helge Klug
+//	@version		1.00
 
-Group   gPluggit	"Pluggit"	<fan>
+Group		gPluggit	"Pluggit"	<fan>
 
 // Time
-Number		Pluggit_CurrentUnixTime					"Current Unix time [%d]" 										<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmDateTime:register:number" }
-//DateTime	Pluggit_CurrentUnixTimeDateTime			"Current Unix time (dateTime) [%d]"								<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmDateTime:registerDateTime:datetime" }
+Number		Pluggit_CurrentUnixTime				"Current Unix time [%d]" 										<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmDateTime:register:number" }
+//DateTime	Pluggit_CurrentUnixTimeDateTime		"Current Unix time (dateTime) [%d]"								<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmDateTime:registerDateTime:datetime" }
 
 
 Number Pluggit_StartExploitationUnixTime		"Date Stamp of the system start [%d]" 							<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmStartExploitationDateStamp:register:number" }
@@ -15,7 +15,6 @@ Number Pluggit_WorkTimeOfSystem					"Work time of system [%d h]" 									<time>
 
 // General
 Number Pluggit_PowerOfPreheater					"Power Of Preheater [%d %%]" 									<energy>			(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmPreheaterDutyCycle:register:number" }
-
 Number Pluggit_ActiveUnitMode					"Unit Mode [MAP(Pluggit.map):ActiveUnitMode_%s]" 				<settings>			(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmRamIdxUnitMode:register:number" }
 Number Pluggit_SpeedLevelOfFans 				"Speed level of Fans [MAP(Pluggit.map):SpeedLevelOfFans_%s]" 	<settings>			(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmRomIdxSpeedLevel:register:number" }
 Number Pluggit_CurrentUnitState					"Current Unit State [MAP(Pluggit.map):CurrentUnitState_%s]" 						(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmCurrentBLState:register:number" }
@@ -24,6 +23,7 @@ Number Pluggit_CurrentUnitState					"Current Unit State [MAP(Pluggit.map):Curren
 // FANS
 Number Pluggit_SpeedFan01 						"Speed Fan 1 [%d rpm]" 																(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmHALTaho1:register:number" }
 Number Pluggit_SpeedFan02 						"Speed Fan 2 [%d rpm]" 																(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmHALTaho2:register:number" }
+
 
 // Bypass
 Number Pluggit_BypassTemperatureMin				"Min temperature for outdoor air (T1) [%.1f °C]" 	 			<temperature>		(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmBypassTmin:register:number" }
