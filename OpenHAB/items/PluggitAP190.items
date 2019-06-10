@@ -1,0 +1,47 @@
+//
+//	@author			  Helge Klug
+//	@copyright		Copyright (c) 2019 Helge Klug
+//	@version		  1.0
+
+Group   gPluggit	"Pluggit"	<fan>
+
+// Time
+Number		Pluggit_CurrentUnixTime					"Current Unix time [%d]" 										<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmDateTime:register:number" }
+//DateTime	Pluggit_CurrentUnixTimeDateTime			"Current Unix time (dateTime) [%d]"								<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmDateTime:registerDateTime:datetime" }
+
+
+Number Pluggit_StartExploitationUnixTime		"Date Stamp of the system start [%d]" 							<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmStartExploitationDateStamp:register:number" }
+Number Pluggit_WorkTimeOfSystem					"Work time of system [%d h]" 									<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmWorkTime:register:number" }
+
+// General
+Number Pluggit_PowerOfPreheater					"Power Of Preheater [%d %%]" 									<energy>			(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmPreheaterDutyCycle:register:number" }
+
+Number Pluggit_ActiveUnitMode					"Unit Mode [MAP(Pluggit.map):ActiveUnitMode_%s]" 				<settings>			(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmRamIdxUnitMode:register:number" }
+Number Pluggit_SpeedLevelOfFans 				"Speed level of Fans [MAP(Pluggit.map):SpeedLevelOfFans_%s]" 	<settings>			(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmRomIdxSpeedLevel:register:number" }
+Number Pluggit_CurrentUnitState					"Current Unit State [MAP(Pluggit.map):CurrentUnitState_%s]" 						(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmCurrentBLState:register:number" }
+
+
+// FANS
+Number Pluggit_SpeedFan01 						"Speed Fan 1 [%d rpm]" 																(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmHALTaho1:register:number" }
+Number Pluggit_SpeedFan02 						"Speed Fan 2 [%d rpm]" 																(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmHALTaho2:register:number" }
+
+// Bypass
+Number Pluggit_BypassTemperatureMin				"Min temperature for outdoor air (T1) [%.1f °C]" 	 			<temperature>		(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmBypassTmin:register:number" }
+Number Pluggit_BypassTemperatureMax				"Max temperature for extract air (T3) [%.1f °C]" 				<temperature>		(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmBypassTmax:register:number" }
+Number Pluggit_BypassState						"Bypass state [MAP(Pluggit.map):BypassState_%d]" 				<flow>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmRamIdxBypassActualState:register:number" }
+Number Pluggit_BypassManualTimeout				"Manual bypass duration in [%d minutes]" 						<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmRamIdxBypassManualTimeout:register:number" }
+
+
+
+// Filter
+Number Pluggit_FilterLiveTimeRemaining			"Remaining time of the Filter Lifetime [%d days]" 				<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmFilterRemainingTime:register:number" }
+Number Pluggit_FilterLiveTimeDefault			"Default time of the Filter Lifetime [%d days]" 				<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmFilterDefaultTime:register:number" }
+Number Pluggit_FilterTimerReset					"Reset filter timer" 											<time>				(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmFilterReset:register:number" }
+
+
+
+// Temperature
+Number Pluggit_OutdoorTemperature01 			"Outdoor temperature T1 [%.1f °C]"								<temperature>		(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmRamIdxT1:register:number" }
+Number Pluggit_SupplyTemperature02 				"Supply  temperature T2 [%.1f °C]" 								<temperature>		(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmRamIdxT2:register:number" }
+Number Pluggit_ExtractTemperature03 			"Extract temperature T3 [%.1f °C]" 								<temperature>		(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmRamIdxT3:register:number" }
+Number Pluggit_ExhaustTemperature04 			"Exhaust temperature T4 [%.1f °C]" 								<temperature>		(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmRamIdxT4:register:number" }
