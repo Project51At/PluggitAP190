@@ -1,0 +1,69 @@
+sitemap	PluggitAP190 label="Pluggit AP190"
+{
+	Frame label="Time"
+	{
+		Text item=Pluggit_CurrentUnixTime
+		Text item=Pluggit_WorkTimeOfSystem
+		Text item=Pluggit_StartExploitationUnixTime
+	}
+
+	Frame label="General"
+	{
+		Text item=Pluggit_CurrentUnitState
+		Text item=Pluggit_PowerOfPreheater
+
+		Selection item=Pluggit_SpeedLevelOfFans		mappings=[
+															0 =	"off",
+															1 =	"1",
+															2 =	"2",
+															3 =	"3",
+															4 =	"4"
+														]
+
+		Selection item=Pluggit_ActiveUnitMode mappings=[
+															2		= "Demand",
+															4		= "Manual",
+															8		= "WeekProgram",
+															16		= "Start: Away",
+															64		= "Start: Fireplace",
+															2048	= "Start: Summer",
+															128		= "Start: Bypass",
+
+															40169	= "Stop: Away",
+															32832	= "Stop: Fireplace",
+															40169	= "Stop: Summer",
+															32896	= "Stop: Bypass"
+														]
+
+	}
+
+	Frame label="Fans"
+	{
+		Text item=Pluggit_SpeedFan01
+		Text item=Pluggit_SpeedFan02
+	}
+
+	Frame label="Temperature"
+	{
+		Text item=Pluggit_OutdoorTemperature01
+		Text item=Pluggit_SupplyTemperature02
+		Text item=Pluggit_ExtractTemperature03
+		Text item=Pluggit_ExhaustTemperature04
+	}
+
+	Frame label="Bypass"
+	{
+		Text item=Pluggit_BypassTemperatureMin
+		Text item=Pluggit_BypassTemperatureMax
+		Text item=Pluggit_BypassState
+		Text item=Pluggit_BypassManualTimeout
+	}
+
+	Frame label="Filter"
+	{
+		Text	item=Pluggit_FilterLiveTimeDefault
+		Text	item=Pluggit_FilterLiveTimeRemaining
+		Switch	item=Pluggit_FilterTimerReset	mappings=[	1 = "Reset" ]
+	}
+}
+
