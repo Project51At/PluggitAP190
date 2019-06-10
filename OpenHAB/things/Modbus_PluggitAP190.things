@@ -1,0 +1,244 @@
+//
+//	@author			Helge Klug
+//	@copyright	Copyright (c) 2018 Helge Klug
+//	@version		1.0
+
+//	@see			  http://www.pluggit.com/fileserver/files/1413/609560454939420/21_10_2013_modbus_addresses.pdf
+
+Bridge modbus:tcp:PluggitAP190 [ host="<IP-Address>", port=502, id=2 ] {
+
+	//-------------------------------------------------------------------------
+	//	Register	:	40101 | prmHALTaho1						| Float	| Read	|   Fan1 rpm
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmHALTaho1					[ start=101,		length=4, refresh=5000,		type="holding" ] {
+		Thing data register						[ readStart="101",	readValueType="float32" ]
+	}
+
+	//-------------------------------------------------------------------------
+	//	Register	:	40103 | prmHALTaho2						| Float	| Read	|	Fan2 rpm
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmHALTaho2					[ start=103,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="103",	readValueType="float32" ]
+	}
+
+	//-------------------------------------------------------------------------
+	//	Register	:	40109 | prmDateTime  					| UINT	| Read	|	Current Date/time in Unix time
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmDateTime					[ start=109,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="109",	readValueType="uint32" ]
+		//Thing data registerDateTime				[ readStart="109",	readValueType="uint32", readTransform="JS(EpocheToDateTime.js)" ]
+	}
+
+	//-------------------------------------------------------------------------
+	//	Register	:	40109 | prmDateTimeSet  				| UINT	| Write	|	New date/time in Unix time
+	//
+	//	Status		:	???
+	//
+	Bridge poller prmDateTimeSet				[ start=109,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register						[ writeStart="109", writeValueType="uint32" ]
+	}
+
+	//-------------------------------------------------------------------------
+	//	Register	:	40133 | prmRamIdxT1  					| Float	| Read	|  Outdoor temperature T1, °C
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmRamIdxT1					[ start=133,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="133",	readValueType="float32" ]
+	}
+
+	//-------------------------------------------------------------------------
+	//	Register	:	40135 | prmRamIdxT2 					| Float	| Read	|  Supply  temperature T2, °C
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmRamIdxT2					[ start=135,		length=4,	refresh=5000,	type="holding" ] {
+        Thing data register						[ readStart="135",	readValueType="float32" ]
+	}
+
+	//-------------------------------------------------------------------------
+	//	Register	:	40137 | prmRamIdxT3  					| Float	| Read	|  Extract temperature T3, °C
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmRamIdxT3					[ start=137,		length=4,	refresh=5000,	type="holding" ] {
+        Thing data register						[ readStart="137",	readValueType="float32" ]
+	}
+
+	//-------------------------------------------------------------------------
+	//	Register	:	40139 | prmRamIdxT4  					| Float	| Read	|  Exhaust temperature T4, °C
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmRamIdxT4					[ start=139,		length=4,	refresh=5000,	type="holding" ] {
+        Thing data register						[ readStart="139",	readValueType="float32" ]
+	}
+
+	//-------------------------------------------------------------------------
+	//	Register	:	40161 | prmPreheaterDutyCycle  			| UINT	| Read	|  Power of Preheater in %
+	//
+	//	Status		:		???
+	//
+	Bridge poller prmPreheaterDutyCycle			[ start=160,		length=2,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="160",	readValueType="uint16" ]
+	}
+
+	//-------------------------------------------------------------------------
+	//	Register	:	40169 | prmRamIdxUnitMode				| UINT	| Write	|	Active Unit mode:
+	//																	| Read	|	Demand Mode				0x0002		2
+	//																				Manual Mode				0x0004		4
+	//																				WeekProgram Mode		0x0008		8
+	//
+	//																				Away Mode Start			0x0010		16
+	//																				Away Mode Start			0x8010		40169
+	//
+	//																				Fireplace Mode Start	0x0040		64
+	//																				Fireplace Mode End		0x8040		32832
+	//
+	//																				Summer Mode Start		0x0800		2048
+	//																				Summer Mode End			0x8800		40169
+	//
+	//																				Select manual bypass	0x0080		128
+	//																				Deselect Manual bypass	0x8080		32896
+	//
+	//	Status		:	???
+	//
+	Bridge poller prmRamIdxUnitMode				[ start=169,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="169",	readValueType="uint32", writeStart="169",	writeValueType="uint32", writeType="holding" ]
+	}
+
+	//-------------------------------------------------------------------------
+	//	Register	:	40199 | prmRamIdxBypassActualState		| UINT	| Read	|	Bypass state:
+	//																				0	Closed		0x0000
+	//																				1	In process	0x0001
+	//																				32	Closing		0x0020
+	//																				64	Opening		0x0040
+	//																				255	Opened		0x00FF
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmRamIdxBypassActualState	[ start=198,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="198",	readValueType="uint32_swap" ]
+	}
+
+ 	//-------------------------------------------------------------------------
+	//	Register	:	40265 | prmRamIdxBypassManualTimeout		| UINT	| Read	|	Manual bypass duration in minutes
+	//
+	//	Status		:	OK
+	//	Note		:	Don't know why to use  readStart="264",	readValueType="uint32_swap"
+	//
+	Bridge poller prmRamIdxBypassManualTimeout	[ start=264,		length=4,	refresh=5000,	type="holding" ] {
+        Thing data register						[ readStart="264",	readValueType="uint32_swap" ]
+	}
+
+ 	//-------------------------------------------------------------------------
+	//	Register	:	40325 | prmRomIdxSpeedLevel				| UINT	| Write	|	Speed level of Fans ->  Manual mode: Fan step can be set
+	//					40325 | prmRomIdxSpeedLevel				| UINT	| Read	|	Speed level of Fans ->  Other modes: Fan step can be read.
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmRomIdxSpeedLevel			[ start=324,		length=4,	refresh=5000,	type="holding" ] {
+        Thing data readregister				[ readStart="324",	readValueType="uint32_swap", writeStart="324",	writeValueType="uint32_swap", writeType="holding"  ]
+	}
+
+ 	//-------------------------------------------------------------------------
+	//	Register	:	40445 | prmBypassTmin 					| Float	| Read	|	Min temperature for outdoor air (T1)
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmBypassTmin					[ start=445,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="445",	readValueType="float32" ]
+	}
+
+ 	//-------------------------------------------------------------------------
+	//	Register	:	40447 | prmBypassTmax 					| Float	| Read	|	Max temperature for extract air (T3)
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmBypassTmax					[ start=447,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="447",	readValueType="float32" ]
+	}
+
+ 	//-------------------------------------------------------------------------
+	//	Register	:	40473 | prmCurrentBLState 				| UINT	| Read	|	Current unit mode:
+	//																				0	Standby
+	//																				1	Manual
+	//																				2	Demand
+	//																				3	Week program
+	//																				4	Servo-flow
+	//																				5	Away
+	//																				6	Summer
+	//																				7	DI Override
+	//																				8	Hygrostat override
+	//																				9	Fireplace
+	//																				10	Installer
+	//																				11	Fail Safe 1
+	//																				12	Fail Safe 2
+	//																				13	Fail Off
+	//																				14	Defrost Off
+	//																				15	Defrost
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmCurrentBLState				[ start=472,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="472",	readValueType="uint32_swap" ]
+	}
+
+
+ 	//-------------------------------------------------------------------------
+	//	Register	:	40555 | prmFilterRemainingTime  		| UINT	| Read	|	Remaining time of the Filter Lifetime (Days)
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmFilterRemainingTime		[ start=554,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="554", readValueType="uint32_swap" ]
+	}
+
+
+ 	//-------------------------------------------------------------------------
+	//	Register	:	 40557 | prmFilterDefaultTime  			| UINT	| Write	|	Filter Lifetime (Days)
+	//																	| Read	|
+	//
+	//	Status		:	OK
+	//
+	Bridge poller prmFilterDefaultTime			[ start=556,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data readregister				[ readStart="556", readValueType="uint32_swap", writeStart="556", writeValueType="uint32_swap", writeType="holding" ]
+	}
+
+
+ 	//-------------------------------------------------------------------------
+	//	Register	:	 40559 | prmFilterReset  			| UINT	| Write	|	Reset filter timer
+	//																			1	Reset filter timer
+	//
+	//
+	//	Status		:
+	//
+	Bridge poller prmFilterReset				[ start=558,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register					[ readStart="558", readValueType="uint32_swap", writeStart="558", writeValueType="uint32_swap", writeType="holding" ]
+	}
+
+ 	//-------------------------------------------------------------------------
+	//	Register	:	40625 | prmWorkTime  					| UINT	| Read	|	Work time of system, in hours
+	//
+	//	Status		:
+	//
+	Bridge poller prmWorkTime					[ start=625,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="625",	readValueType="uint32" ]
+	}
+
+ 	//-------------------------------------------------------------------------
+	//	Register	:	40669 | prmStartExploitationDateStamp	| UINT	| Read	|	Date Stamp of the system start time in Unix time
+	//
+	//	Status		:	OK
+	Bridge poller prmStartExploitationDateStamp	[ start=669,		length=4,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="669",	readValueType="uint32" ]
+	}
+
+
+}
