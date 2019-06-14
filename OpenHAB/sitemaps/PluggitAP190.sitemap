@@ -2,9 +2,9 @@ sitemap	PluggitAP190 label="Pluggit AP190"
 {
 	Frame label="Time"
 	{
-		Text item=Pluggit_CurrentUnixTime
+		Text item=Pluggit_CurrentDateTime
 		Text item=Pluggit_WorkTimeOfSystem
-		Text item=Pluggit_StartExploitationUnixTime
+		Text item=Pluggit_StartExploitationDateTime
 	}
 
 	Frame label="General"
