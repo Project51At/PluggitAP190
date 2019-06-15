@@ -1,0 +1,37 @@
+//
+//	@author			Helge Klug
+//	@copyright		Copyright (c) 2019 Helge Klug
+//	@version		1.00
+
+Group   gPluggit	"Pluggit"	<fan>
+
+// Time
+Number Pluggit_CurrentUnixTime							"Current Unix time [%d]" 										<time>				(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmDateTime\"(?:.*?)value=\"(.*?)\".*)]" }		
+Number Pluggit_StartExploitationUnixTime				"Date Stamp of the system start [%d]" 							<time>				(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmStartExploitationDateStamp\"(?:.*?)value=\"(.*?)\".*)]" }	
+Number Pluggit_WorkTimeOfSystem							"Work time of system [%d h]" 									<time>				(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmWorkTime\"(?:.*?)value=\"(.*?)\".*)]" }	
+
+// General
+Number Pluggit_PowerOfPreheater							"Power Of Preheater [%d %%]" 									<energy>			(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmPreheaterDutyCycle\"(?:.*?)value=\"(.*?)\".*)]" }
+Number Pluggit_ActiveUnitMode							"Unit Mode [MAP(Pluggit.map):ActiveUnitMode_%s]" 				<settings>			(gPluggit) 			{ http=">[*:POST:http://192.168.199.105/HomeAutomation/Pluggit/index.php?Mode=SetParam&Param=prmRamIdxUnitMode&Value=%2$s] 		<[PluggitCache:5000:REGEX(.*?\"prmRamIdxUnitMode\"(?:.*?)value=\"(.*?)\".*)]" }	
+Number Pluggit_SpeedLevelOfFans 						"Speed level of Fans [MAP(Pluggit.map):SpeedLevelOfFans_%s]" 	<settings>			(gPluggit) 			{ http=">[*:POST:http://192.168.199.105/HomeAutomation/Pluggit/index.php?Mode=SetParam&Param=prmRomIdxSpeedLevel&Value=%2$s]	<[PluggitCache:5000:REGEX(.*?\"prmRomIdxSpeedLevel\"(?:.*?)value=\"(.*?)\".*)]"}
+Number Pluggit_CurrentUnitState							"Current Unit State [MAP(Pluggit.map):CurrentUnitState_%s]" 						(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmCurrentBLState\"(?:.*?)value=\"(.*?)\".*)]" }			
+
+// FANS
+Number Pluggit_SpeedFan01 								"Speed Fan 1 [%d rpm]" 																(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmHALTaho1\"(?:.*?)value=\"(.*?)\".*)]" }
+Number Pluggit_SpeedFan02 								"Speed Fan 2 [%d rpm]" 																(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmHALTaho2\"(?:.*?)value=\"(.*?)\".*)]" }
+
+// Temperature
+Number Pluggit_OutdoorTemperature01 					"Outdoor temperature T1 [%.1f °C]"								<temperature>		(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmRamIdxT1\"(?:.*?)value=\"(.*?)\".*)]" }
+Number Pluggit_SupplyTemperature02 						"Supply  temperature T2 [%.1f °C]" 								<temperature>		(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmRamIdxT2\"(?:.*?)value=\"(.*?)\".*)]" }
+Number Pluggit_ExtractTemperature03 					"Extract temperature T3 [%.1f °C]" 								<temperature>		(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmRamIdxT3\"(?:.*?)value=\"(.*?)\".*)]" }
+Number Pluggit_ExhaustTemperature04 					"Exhaust temperature T4 [%.1f °C]" 								<temperature>		(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmRamIdxT4\"(?:.*?)value=\"(.*?)\".*)]" }
+
+// Bypass
+Number Pluggit_BypassTemperatureMin						"Min temperature for outdoor air (T1) [%.1f °C]" 	 			<temperature>		(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmBypassTmin\"(?:.*?)value=\"(.*?)\".*)]" }	
+Number Pluggit_BypassTemperatureMax						"Max temperature for extract air (T3) [%.1f °C]" 				<temperature>		(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmBypassTmax\"(?:.*?)value=\"(.*?)\".*)]" }	
+Number Pluggit_BypassState								"Bypass state [MAP(Pluggit.map):BypassState_%d]" 				<flow>				(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmRamIdxBypassActualState\"(?:.*?)value=\"(.*?)\".*)]" }
+
+// Filter
+Number Pluggit_FilterLiveTimeRemaining					"Remaining time of the Filter Lifetime [%d days]" 				<time>				(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmFilterRemainingTime\"(?:.*?)value=\"(.*?)\".*)]" }
+Number Pluggit_FilterLiveTimeDefault					"Default time of the Filter Lifetime [%d days]" 				<time>				(gPluggit) 			{ http="<[PluggitCache:5000:REGEX(.*?\"prmFilterDefaultTime\"(?:.*?)value=\"(.*?)\".*)]" }
+
