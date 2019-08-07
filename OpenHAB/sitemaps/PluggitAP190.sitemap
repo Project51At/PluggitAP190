@@ -31,7 +31,7 @@ sitemap	PluggitAP190 label="Pluggit AP190"
 
 															40169	= "Stop: Away",
 															32832	= "Stop: Fireplace",
-															40169	= "Stop: Summer",
+															34816	= "Stop: Summer",
 															32896	= "Stop: Bypass"
 														]
 
