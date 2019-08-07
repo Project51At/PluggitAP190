@@ -9,10 +9,10 @@
 //		Register	:	40103 | prmHALTaho2						| Float	| Read	|	Fan2 rpm
 //		Register	:	40109 | prmDateTime  					| UINT	| Read	|	Current Date/time in Unix time
 //		Register	:	40109 | prmDateTimeSet  				| UINT	| Write	|	New date/time in Unix time
-//		Register	:	40133 | prmRamIdxT1  					| Float	| Read	|	Outdoor temperature T1, 캜
-//		Register	:	40135 | prmRamIdxT2 					| Float	| Read	|	Supply  temperature T2, 캜
-//		Register	:	40137 | prmRamIdxT3  					| Float	| Read	|	Extract temperature T3, 캜
-//		Register	:	40139 | prmRamIdxT4  					| Float	| Read	|	Exhaust temperature T4, 캜
+//		Register	:	40133 | prmRamIdxT1  					| Float	| Read	|	Outdoor temperature T1, 째C
+//		Register	:	40135 | prmRamIdxT2 					| Float	| Read	|	Supply  temperature T2, 째C
+//		Register	:	40137 | prmRamIdxT3  					| Float	| Read	|	Extract temperature T3, 째C
+//		Register	:	40139 | prmRamIdxT4  					| Float	| Read	|	Exhaust temperature T4, 째C
 //		Register	:	40161 | prmPreheaterDutyCycle  			| UINT	| Read	|	Power of Preheater in %
 //		Register	:	40169 | prmRamIdxUnitMode				| UINT	| Write	|	Active Unit mode:
 //																		| Read	|		Demand Mode				0x0002		2
@@ -26,7 +26,7 @@
 //																						Fireplace Mode End		0x8040		32832
 //
 //																						Summer Mode Start		0x0800		2048
-//																						Summer Mode End			0x8800		40169
+//																						Summer Mode End			0x8800		34816
 //
 //																						Select manual bypass	0x0080		128
 //																						Deselect Manual bypass	0x8080		32896
