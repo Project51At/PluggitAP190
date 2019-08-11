@@ -20,7 +20,7 @@
 //																						WeekProgram Mode		0x0008		8
 //
 //																						Away Mode Start			0x0010		16
-//																						Away Mode Start			0x8010		40169
+//																						Away Mode End			0x8010		40169
 //
 //																						Fireplace Mode Start	0x0040		64
 //																						Fireplace Mode End		0x8040		32832
